@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Js</title>
+</head>
+<body>
+    <script>
+        // Recursive function
+        // factorial
+        // naci factorial nekog broja
+        const factorial = number => {
+            let product = 1;
+            for (let i = 2; i <= number; i++) {
+                console.log("i", i);
+                // 2
+                // 3
+                // 4
+                console.log("product frt", product);
+                product *= i;
+                // product = product * i;
+                console.log("product",product);
+                // 2
+                // 6
+                // 24
+            }
+            return product;
+        };
+
+        console.log(factorial(4));
+        // 24
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+        // String Reversal
+        const reverse = string => {
+            let result = "";
+            for (let character of string) {
+                result = character + result;
+                console.log("result", result);
+                // H
+                // eH
+                // leH
+                // lleH
+                // olleH
+                // !olleH
+            }
+            return result
+        };
+        console.log(reverse("Hello!"));
+        // !olleH
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+        // Palindrome
+        const isPalindrome = string => {
+            const cleanded = string.replace(/\W/g, "").toLowerCase();
+            console.log("cleanded", cleanded);
+            return cleanded === cleanded.split("").reverse().join("");
+        };
+        console.log("ana",isPalindrome("Ana"));
+        // true
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+
+        // Integer Reversal
+        const reverseANumber = number => 
+            parseInt(
+                number
+                    .toString()
+                    .split("")
+                    .reverse()
+                    .join("")
+            );
+        console.log("number", reverseANumber(1234));
+        // 4321
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+
+        // Fizz Buzz
+        const FizzBuzz = number => {
+            let output = [];
+            for( let i = 1; i <= number; i++) {
+                if (i % 6 === 0) {
+                    output.push("Fizz Buzz");
+                } else if (i % 2 === 0) {
+                    output.push("Fizz");
+                } else if (i % 3 === 0) {
+                    output.push("Buzz");
+                } else {
+                    output.push(i);
+                }
+            }
+            return output;
+        }
+
+        console.log(FizzBuzz(456));
+        // [1, 'Fizz', 'Buzz', 'Fizz', 5, 'Fizz Buzz', 7, 'Fizz', 'Buzz', 'Fizz', 11, 'Fizz Buzz', 13, 'Fizz', 'Buzz', 'Fizz', 17, 'Fizz //Buzz', 19, 'Fizz', 'Buzz', 'Fizz', 23, 'Fizz Buzz', 25, 'Fizz', 'Buzz', 'Fizz', 29, 'Fizz Buzz', 31, 'Fizz', 'Buzz', 'Fizz', 35, 'Fizz Buzz', 37, 'Fizz', 'Buzz', 'Fizz', 41, 'Fizz Buzz', 43, 'Fizz', 'Buzz', 'Fizz', 47, 'Fizz Buzz', 49, 'Fizz', 'Buzz', 'Fizz', 53, 'Fizz Buzz', 55, 'Fizz', 'Buzz', 'Fizz', 59, 'Fizz Buzz', 61, 'Fizz', 'Buzz', 'Fizz', 65, 'Fizz Buzz', 67, 'Fizz', 'Buzz', 'Fizz', 71, 'Fizz Buzz', 73, 'Fizz', 'Buzz', 'Fizz', 77, 'Fizz Buzz', 79, 'Fizz', 'Buzz', 'Fizz', 83, 'Fizz Buzz', 85, 'Fizz', 'Buzz', 'Fizz', 89, 'Fizz Buzz', 91, 'Fizz', 'Buzz', 'Fizz', 95, 'Fizz Buzz', 97, 'Fizz', 'Buzz', 'Fizz', …]
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+        // Max Charachters
+        const max = string => {
+            const characters = {};
+            for (let character of string) {
+                characters[character] = characters[character] + 1 || 1;
+                console.log("characters[character]", characters[character]);
+            }
+
+            let maxCount = 0;
+            let maxCharacter = null;
+
+            for (let character in characters) {
+                if (characters[character] > maxCount) {
+                    maxCount = characters[character];
+                    console.log("maxCount", maxCount);
+                    maxCharacter = character;
+                    console.log("maxCharacter", maxCharacter)
+                }
+            }
+            return maxCharacter;
+        }
+        console.log(max("Viiiiiki"));
+        // i
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+
+        // Anagrams
+        const charCount = string => {
+            const table = {};
+            for (let char of string.replace(/\W/g, "").toLowerCase()) {
+                table[char] = table[char] + 1 || 1;
+            }
+            return table;
+        }
+
+        const anagrams = (stringA, stringB) => {
+            const charCountA = charCount(stringA);
+            const charCountB = charCount(stringB);
+
+            if (Object.keys(charCountA).length !== Object.keys(charCountB).length) {
+                return false;
+            }
+
+            for (let char in charCountA) {
+                if (charCountA[char] !== charCountB[char]) {
+                    return false;
+                }
+            }
+            return true;
+        }
+        console.log(anagrams("hello world", "world hello"));
+        // true
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+        // Reverse Array
+        const reverseArray = array => {
+            for (let i = 0; i < array.length / 2; i++) {
+                const temp = array[i];
+                array[i] = array[array.length - 1 - i];
+                array[array.length - 1 - i] = temp;
+            }
+            return array;
+        };
+        console.log(reverseArray([1, 2, 3, 4, 5, 6]));
+        // [6, 5, 4, 3, 2, 1]
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+        // Reverse Worlds
+        const reverseWords =  string => 
+            string
+                .split(" ")
+                .map(word => 
+                    word
+                        .split("")
+                        .reverse()
+                        .join("")
+                    
+                )
+                .join(" ");
+        console.log(reverseWords("Hello you"));
+        // olleH uoy
+        console.log("-------------------------------------------------------------------------------------------------");
+
+
+
+        // Find duplacates in array
+        // You could sort the array and then run through it and then see if the next(or previous) index is the same as the current
+        function eliminateDuplicates(arr) {
+            let len = arr.length;
+            let out = [];
+            let obj = {};
+
+            for (let i = 0; i < len; i++) {
+                obj[arr[i]] = 0;
+            }
+            for (let i in obj) {
+                out.push(i);
+            }
+            return out;
+        }
+
+        console.log(eliminateDuplicates([1, 6, 7, 3, 6, 8, 1, 3, 4, 5, 1, 7, 2, 6]))
+        // ['1', '2', '3', '4', '5', '6', '7', '8']
+
+
+        // find odd numbers in array
+        const numbers = [8, 19, 5, 6, 14, 9, 13];
+        const odds = [];
+        for (const num of numbers) {
+            if (num % 2 === 1) {
+                odds.push(num);
+            }
+        }
+        console.log(odds);
+        // [19, 5, 9, 13]
+    </script>
+</body>
+</html>
